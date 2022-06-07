@@ -5,14 +5,61 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day 1 | Javascript Refresher > Conditionals</title>
+  <link rel="stylesheet" href="styles.css">
   <!-- > using script defer for possible faster loading of js -->
   <script type="module" src="./level1.js" defer></script>
+  <script type="module" src="./level2.js" defer></script>
+  <script type="module" src="./level3.js" defer></script>
 </head>
 <body>
   <section>
     <h1>30 Days of React: Day 1 | Javascript Refresher > Conditionals</h1>
     <p>Open console to view results</p>
   </section>
-  <script></script>
+  <section>
+    <h2>Level 1</h2>
+    <div class="question-wrapper">
+      <button data-question="level1">Click for exercise-1</button>
+      <p data-answer="level1"></p>
+    </div>
+    <div class="question-wrapper">
+      <button data-question="level1">Click for exercise-2</button>
+      <p data-answer="level1"></p>
+    </div>
+    <div>
+      <p>Check console for exercise-3</p>
+    </div>
+    <div class="question-wrapper">
+      <button data-question="level1">Click for exercise-4</button>
+      <p data-answer="level1"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Level 2</h2>
+    <div>
+      <label for="score">Enter your score</label>
+      <input type="number" name="score" id="score" data-question="level2">
+      <span data-answer="level2"></span>
+    </div>
+    <div>
+      <label for="month">Enter month</label>
+      <input type="text" name="month" id="month" data-question="level2">
+      <span data-answer="level2"></span>
+    </div>
+    <div>
+      <label for="day">Enter day</label>
+      <input type="text" name="day" id="day" data-question="level2">
+      <span data-answer="level2"></span>
+    </div>
+  </section>
+  <section>
+    <h2>Level 3</h2>
+    <label for="month2">Enter month</label>
+    <input type="text" name="month2" id="month2" data-question="level3">
+    <label for="leap-year">Leap Year</label>
+    <input type="checkbox" name="leap-year" id="leap-year" data-leap-year>
+    <p data-answer="level3"></p>
+  </section>
 </body>
 </html>

@@ -1,0 +1,8 @@
+.question-wrapper {
+  display: flex;
+}
+
+.question-wrapper * {
+  margin: 0;
+  padding: 1rem;
+}
