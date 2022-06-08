@@ -26,6 +26,14 @@ const midDays = ['april', 'june', 'november', 'september']
 // 28/29 days
 const minDays = ['february']
 
+const testObject = {
+  max: maxDays,
+  mid: midDays,
+  min: minDays
+}
+
+log(testObject.contains('april'))
+
 // global variables
 let leap
 let month

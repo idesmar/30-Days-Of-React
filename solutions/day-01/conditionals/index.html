@@ -39,7 +39,7 @@
     <h2>Level 2</h2>
     <div>
       <label for="score">Enter your score</label>
-      <input type="number" name="score" id="score" data-question="level2">
+      <input type="number" name="score" id="score" max="100" min="0" data-question="level2">
       <span data-answer="level2"></span>
     </div>
     <div>
@@ -52,6 +52,21 @@
       <input type="text" name="day" id="day" data-question="level2">
       <span data-answer="level2"></span>
     </div>
+
+    <!-- * alternative html for selecting a day using select > option -->
+    <!-- <div>
+      <label for="day-select">Select a day </label>
+      <select name="day-select" id="day-select">
+        <option value="" selected disabled></option>
+        <option value="monday">Monday</option>
+        <option value="tuesday">Tuesday</option>
+        <option value="wednesday">Wednesday</option>
+        <option value="thursday">Thursday</option>
+        <option value="friday">Friday</option>
+        <option value="saturday">Saturday</option>
+        <option value="sunday">Sunday</option>
+      </select>
+    </div> -->
   </section>
   <section>
     <h2>Level 3</h2>

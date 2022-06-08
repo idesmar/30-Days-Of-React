@@ -10,8 +10,6 @@ levelStart(1)
 // Enter your age:15
 // You are left with 3 years to drive.
 
-const question = 'Enter your age:'
-
 const checkDrivingAge = (age) => {
   if (+age >= 18) return 'You are old enough to drive'
   return `Wait ${18 - +age} more year/s`
@@ -96,11 +94,16 @@ const isOddOrEven = (num) => {
 
 
 // ======================================
+let question
 const level1Questions = document.querySelectorAll('[data-question="level1"]')
 const level1Answers = document.querySelectorAll('[data-answer="level1"]')
 
 level1Questions.forEach((btn, idx) => {
   btn.addEventListener('click', () => {
+    question = idx === 2
+      ? 'Enter a number:'
+      : 'Enter your age:'
+
     let num = prompt(question)
     const answer = level1Answers[idx]
     let msg = 'Enter a number'
