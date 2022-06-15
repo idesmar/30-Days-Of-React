@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 1 | Javascript Refresher > Object</title>
+  <script type="module" src="./example.js" defer></script>
+  <script type="module" src="./level1.js" defer></script>
+  <script type="module" src="./level2.js" defer></script>
+  <style>
+    .highlight {
+      background-color: darkblue;
+      color: white;
+      width: fit-content;
+      padding: 1em;
+    }
+    em {
+      background-color: darkgreen;
+      font-size: 1.2em;
+      font-style: normal;
+      padding-inline: 1ch;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.15rem 0.8rem;
+      margin-block: 0.3rem;
+      border-radius: 100vw;
+      background-color: green;
+      color: black;
+    }
+    .btn a {
+      color: inherit;
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>30 Days of React: Day 1 | Javascript Refresher > Object</h1>
+    <p>Open console to view results</p>
+    <div>
+      <label for="country">Search Country</label>
+      <input type="text" name="country" id="country" data-lookup-country>
+      <div data-lookup-result></div>
+    </div>
+    <div class="btn">
+      <a href="./level3">Proceed to Level 3</a>
+    </div>
+  </main>
+  <section>
+    <h2>Some important stuff?</h2>
+    <p class="highlight" style="padding: 0.5rem;">
+      using <em>this</em> keyword inside an object method requires a <em>regular function</em>;
+      <br>an arrow function format will throw an error!
+    </p>
+    <button
+    style="background-color: green;"
+    data-run-example
+    >Run code for Object Methods</button>
+    <p style="border-bottom: 1px solid; width: fit-content;">View original page by clicking
+      <a
+      style="text-decoration: none;"
+      href="https://github.com/Asabeneh/30-Days-Of-React/blob/master/01_Day_JavaScript_Refresher/01_javascript_refresher.md#object-methods"
+      target="_blank"
+      >
+      here
+      </a>
+    </p>
+    <pre><code>
+      const person = {
+        firstName: 'Asabeneh',
+        age: 250,
+        country: 'Finland',
+        city: 'Helsinki',
+        skills: ['HTML', 'CSS', 'JS'],
+        title: 'teacher',
+        address: {
+          street: 'Heitamienkatu 16',
+          pobox: 2002,
+          city: 'Helsinki',
+        },
+        getPersonInfo: function () {
+          return `I am ${this.firstName} and I live in ${this.city}, ${this.country}. I am ${this.age}.`
+        },
+      }
+      <div class="highlight">/* Object methods:
+    Object.assign, Object.keys, Object.values, Object.entries
+    hasOwnProperty */</div>
+      const copyPerson = Object.assign({}, person)
+      console.log(copyPerson)
+
+      const keys = Object.keys(copyPerson)
+      console.log(keys) // ['name', 'age', 'country', 'skills', 'address', 'getPersonInfo']
+
+      const address = Object.keys(copyPerson.address)
+      console.log(address) // ['street', 'pobox', 'city']
+
+      const values = Object.values(copyPerson)
+      console.log(values)
+
+      const entries = Object.entries(copyPerson)
+      console.log(entries)
+
+      console.log(copyPerson.hasOwnProperty('name'))
+      console.log(copyPerson.hasOwnProperty('score'))
+    </code></pre>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+form { width: fit-content; outline: 1px solid; padding: 1.5rem 1rem; }
+form > div { display: flex; justify-content: flex-end; }
+button[type="submit"] { margin-top: 0.8rem; }
+.forms { display: flex; width: fit-content;}
+.forms > * + * { margin-left: 2rem; } /* gap on flex support 89.28% as of writing */
+.product { border: 1px solid; padding-inline: 1rem; }
+/* padding-inline support 88.98% as of writing; use for practice only */
+.product p { margin: 0.5rem; }
+.products { width: fit-content; }
+.products > * + * { margin-top: 1rem; }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Days of React: Day 1 | Javascript Refresher > Object > Level 3</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="module" src="./js/level3.js" defer></script>
+</head>
+<body>
+  <div>
+    <a href="../">Back to main</a>
+  </div>
+  <main>
+    <h1>30 Days of React: Day 1 | Javascript Refresher > Object > Level 3</h1>
+    <p>Open console to view results</p>
+  </main>
+  <section>
+    <h2 style="margin: 0;">Forms</h2>
+    <div class="forms">
+      <div>
+        <h3>Sign Up</h3>
+        <form data-signUp-form>
+          <fieldset>
+            <legend>Email</legend>
+            <input type="email" name="email" id="email">
+          </fieldset>
+          <fieldset>
+            <legend>Username</legend>
+            <input type="text" name="username" id="username">
+          </fieldset>
+          <fieldset>
+            <legend>Password</legend>
+            <input type="password" id="password">
+          </fieldset>
+          <div><button type="submit">Sign Up</button></div>
+        </form>
+        <div>
+          <p data-signUp-result></p>
+        </div>
+      </div>
+      <div>
+        <h3>Sign In</h3>
+        <form data-signIn-form>
+          <fieldset>
+            <legend>Username</legend>
+            <!-- > TESTING value: tester -->
+            <input type="text" name="usernameIn" id="usernameIn" value="Tester">
+          </fieldset>
+          <fieldset>
+            <!-- > TESTING value: 123 -->
+            <legend>Password</legend>
+            <input type="password" name="passwordIn" id="passwordIn" value="123">
+          </fieldset>
+          <div><button type="submit">Sign In</button></div>
+        </form>
+        <div>
+          <p data-signIn-result=""></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 data-username></h2>
+    <div data-products class="products"></div>
+  </section>
+</body>
+</html>
