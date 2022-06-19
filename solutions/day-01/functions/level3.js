@@ -153,6 +153,9 @@ log(factorial(121))
 
 // ? (5) Call your function isEmpty, it takes a parameter and it checks if it is empty or not
 function isEmpty(arg) {
+  // guard clause for passing no arguments
+  if ([...arguments].length === 0) return true
+
   const type = typeof (arg)
 
   switch (type) {
@@ -166,6 +169,7 @@ function isEmpty(arg) {
 log(isEmpty(''), 'isEmpty function')
 log(isEmpty([]), 'isEmpty function')
 log(isEmpty({}), 'isEmpty function')
+log(isEmpty(), 'no argument')
 
 
 // ? (6) Write a function called average, it takes an array parameter and returns the average of the items. Check if all the array items are number types. If not give return reasonable feedback.
