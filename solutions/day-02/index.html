@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+  rel="stylesheet"
+/>
+  <title>30 Days Of React Challenge | Day 01</title>
+  <style>
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      font-family: 'Montserrat';
+      font-weight: 300;
+    }
+    *, *::before, *::after {
+      margin: 0;
+    }
+    small {
+      background-color: darkgreen;
+      font-size: 1rem;
+    }
+    .notice {
+      background-color: darkblue;
+    }
+    ul {
+      padding-left: 0.5rem;
+      list-style: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="root"></div>
+
+  <!--
+    There's no need to place script at head and use `defer`
+    the document only has one div.root to load and the rest is loaded by JS
+    note: this file uses CDN instead of of packages
+  -->
+
+  <!-- React CDN / notice crossorigin -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+  <!-- ReactDOM CDN / notice crossorigin -->
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Babel CDN / NO crossorigin -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+  <!-- NOTE: type="text/babel" -->
+  <script type="text/babel">
+    const log = console.log
+    log(React, 'TESTING IF ALL CDNs ARE PROPERLY LINKED') // check if all CDN are linked
+    const rootElement = document.querySelector('.root')
+
+
+    const student = {
+      firstName: 'siege',
+      lastName: 'idesmar'
+    }
+    /* alternative to writing inline directly is assigning it to variable and referencing it inline */
+    // const headerStyle = {fontSize: '1rem', backgroundColor: '#4C54D2'}
+    const header = (
+      <header
+      /*  note: css is embedded in the form of an object
+          > remove hyphens replace with camelCase syntax
+          since inline here, render will also be inline
+          outer curly brackets contain embeds
+          inner curly brackets is the container for the css/style object  */
+        style={{fontSize: '1rem', backgroundColor: '#4C54D2'}}
+      >
+        <h1 tabIndex='1'>30 Days of React: Day 2</h1>
+        <h2>Getting Started with React</h2>
+        <p>{student.firstName} {student.lastName}</p>
+      </header>
+    )
+
+    const techs = ['HTML', 'CSS', 'JavaScript']
+    // notice that tech is enclosed in {}
+    const techsFormatted = techs.map(tech => <li>{tech}</li>)
+    /* // unable to comment out inside of JSX element hence placed here
+      <div style={{outline: '1px solid blue'}}>
+        <ul>{techsFormatted}</ul>
+        <small>same array but formatted; <span className="notice">no keys therefore error displayed on console</span></small>
+      </div>
+    */
+
+    // using array index as key. Temporary fix only and should NOT be used as much as possible
+    const techsFormattedWithKey = techs.map((tech, idx) => <li key={idx}>{tech}</li>)
+    const main = (
+      <main data-some-attribute='something-important'>
+        <h3>Requirements to get started with React.js</h3>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Javascript</li>
+        </ul>
+        <div style={{outline: '1px solid blue'}}>
+          <ul>{techs}</ul>
+          <small>an array injected directly to JSX</small>
+        </div>
+        <div style={{outline: '1px solid blue'}}>
+          <ul>{techsFormattedWithKey}</ul>
+          <small>same array but formatted and used array index as key <span className="notice">Use unique ids as much as possible</span>
+          </small>
+        </div>
+        <div>
+          <a href="./exercise">Go to exercise page</a>
+        </div>
+      </main>
+    )
+
+    const today = new Date()
+    const footer = <footer>{today.toString()}</footer>
+
+    const app = (
+      <>
+        {header}
+        {main}
+        {footer}
+      </>
+    )
+
+    /*  React can only render one component at a time
+        render() arguments: JSXElement/component and root document */
+    ReactDOM.render(app, rootElement)
+
+    /*  Alternative is putting all the components in an array.
+        This removes the requirement of placing all components in
+        a parent element like `app` */
+    // ReactDOM.render([header, main, footer], rootElement)
+    log(document.querySelector('[data-some-attribute="something-important"]'))
+  </script>
+</body>
+</html>
