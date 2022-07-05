@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+  <title>30 Days Of React Challenge | Day 03</title>
+  <style>
+    :root { font-family: 'Didact Gothic', sans-serif; }
+    body { display: flex; justify-content: center; background-color: #1a1a1a; }
+    #root {
+      max-width: 50rem;
+	    min-height: 100vh;
+      color: #f0f0f0;
+      padding: 1rem;
+    }
+    *:not(ol), *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    a { text-decoration: none; color: yellow; }
+    ol { max-width: 42rem; }
+    summary { cursor: pointer; background-color: #2e2e2e; list-style: none;}
+    summary:hover { background-color: green; }
+    input[type="button"] { border: none; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React CDN / notice crossorigin -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+  <!-- ReactDOM CDN / notice crossorigin -->
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Babel CDN / NO crossorigin -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- developer's' script -->
+  <script type="text/babel">
+    const log = console.log
+
+    const header = (
+      <header>
+        <h1>30 Days of React: Day 3</h1>
+      </header>
+    )
+
+    const qnaArr = [
+      {
+        question: 'What is a module?',
+        answer: 'A module is a file that contains function/s that can be imported or exported if needed',
+        example: "eg. in this repo there is a global.js file that contains 1 variable and 1 function import { log, levelStart } from '../global.js'"
+      },
+      {
+        question: 'What is package?',
+        answer: 'A package is a module or collection of modules'
+      },
+      {
+        question: 'What is the difference between a module and a package?',
+        answer: 'A package can be a collection of module while a module is just one file'
+      },
+      {
+        question: 'What is NPM?',
+        answer: 'NPM (Node Package Manager) makes it easy to download and manage packages available in its registry.'
+      },
+      {
+        question: 'What is Webpack?',
+        answer: 'Webpack is a module bundler. --- Module bundlers, as it is named, bundles multiple modules into one (module) reducing the HTTP requests of the final project.',
+        example: 'eg. assuming the project has 5 script files (all type="module"). These 5 scripts can be reduced to one script file by a module bundler (ie. Webpack)'
+      },
+      {
+        question: 'How do you create a new React project?',
+        answer: 'To initiate a new React project, run `npx create-react-app [app-name]`',
+        notes: ['NOTE: Troubleshooting create-react-app ^5.0: You are running `create-react-app` 4.0.3, which is behind the latest release (5.0.0)" and "We no longer support global installation of Create React App".'],
+        command: '> run `npx clear-npx-cache`, retry npx create-react-app [app-name] and restart machine if an error is encountered',
+        source: 'https://www.ceos3c.com/web-development/create-react-app-error/#solution-1-clearing-the-cache'
+      },
+      {
+        question: 'What are the files and folders inside a project folder (package.json, package-lock.json or yarn.lock, .gitignore,node_modules and public)?',
+        answer: '.gitignore  README.md  node_modules  package-lock.json  package.json  public  src',
+        notes: ['pubic > index.html + logo192.png + logo512.png + manifest.json + robots.txt', 'Essential public > index.html', 'src > App.css + App.js + App.test.js + index.css + index.js + logo.svg + reportWebVitals.js + setupTests.js', 'Essential src > index.js'],
+        source: 'https://github.com/Asabeneh/30-Days-Of-React/blob/master/03_Day_Setting_Up/03_setting_up.md#react-boilerplate'
+      },
+      {
+        question: 'What is your favorite code editor (I believe that it is Visual Studio Code)?',
+        answer: 'Invoking the 5th (Amendment of the US Constitution) 🤓'
+      },
+      {
+        question: 'Add different Visual Studio Code extensions to improve your productivity(eg. prettier, ESLint etc).',
+        answer: 'Invoking the 5th (Amendment of the US Constitution) 🤓'
+      },
+      {
+        question: 'Try to make a different custom module in a different file and import it to index.js.',
+        answer: "In this repo there is a global.js file that contains 1 variable and 1 function; import { log, levelStart } from '../global.js'"
+      }
+    ]
+
+    const qnaEls = qnaArr.map((el, idx) => {
+      const { question, answer, example, notes, command, source } = el
+      let extra = []
+      if (example) extra.push(example)
+      if (notes) extra.push(...notes)
+      if (command) extra.push(command)
+      if (source) extra.push(source)
+
+      /*
+        Using includes('https') & includes('Essential') is a band-aid solution!
+        If this situation is to be encountered in a production/production-like situation,
+        a better fix has to be implemented!
+      */
+      const extraEls = (
+        <>
+          <ul style={{paddingLeft: '1rem'}}>
+            {extra.map((el, idx) => (
+              (el.includes('https'))
+                ? <li key={idx}><a href={el}>Read More</a></li>
+                : el.includes('Essential')
+                  ? <li key={idx} style={{color: 'lightgreen'}}>{el}</li>
+                  : <li key={idx}>{el}</li>
+            ))}
+          </ul>
+        </>
+      )
+
+      // NOTE: details has an attribute as open
+      return (
+        <li key={idx}>
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+            {extra.length ? extraEls : ''}
+          </details>
+        </li>
+      )
+    })
+
+    const btnInitialState = 'Expand all'
+    const handleBtn = (e) => {
+      const btn = e.target
+      const currentState = e.target.value
+      if (currentState === btnInitialState) {
+        btn.value = 'Collapse all'
+        document.querySelectorAll('details').forEach(el => {
+          el.open = true
+        })
+        btn.style.backgroundColor = '#2e2e2e'
+      } else {
+        btn.value = btnInitialState
+        document.querySelectorAll('details').forEach(el => {
+          el.open = false
+        })
+        btn.style.backgroundColor = 'green'
+      }
+    }
+    const btnStyle = {
+      display: 'block',
+      padding: '0.3em 0.7em',
+      borderRadius: '0.7em',
+      cursor: 'pointer',
+      backgroundColor: 'green',
+      color: 'white'
+    }
+    const qna = (
+      <>
+        <h3>Exercise Level 1</h3>
+        <small>All answers are based on the author's understanding. It is greatly appreciated if any needed corrections or clarifications is brought to the attention of the author. Fastest way to connect is twitter <a href="https://twitter.com/idesmar">@idesmar</a>. Thank you!</small>
+        <input
+          type="button"
+          value={btnInitialState}
+          style={btnStyle}
+          onClick={handleBtn}
+        />
+        <ol>{qnaEls}</ol>
+      </>
+    )
+
+    const main = (
+      <main>
+        <h2>Setting up React</h2>
+        {qna}
+      </main>
+    )
+
+    const app = (
+      <>
+        {header}
+        {main}
+      </>
+    )
+
+    ReactDOM.render(app, document.getElementById('root'))
+
+  </script>
+</body>
+</html>
