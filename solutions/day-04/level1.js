@@ -1,4 +1,6 @@
 /*
+NOTE: All answers are based on the author's understanding. It is greatly appreciated if any needed corrections or clarifications is brought to the attention of the author. Fastest way to connect is twitter @idesmar. Thank you!
+
   ? (1) What is the difference between a regular function and an arrow function?
     - arrow functions can be shortened by removing `return` keyword
     eg. const addTwo = (x) => x + 2
